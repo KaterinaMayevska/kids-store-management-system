@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://bootswatch.com/5/minty/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+
+    <title>Register</title>
+</head>
+<body>
+<div class="container">
+    <div th:replace="~{navbar :: navigation(Register)}"/>
+    <h1 style="padding-top: 20px">Your credentials:</h1>
+
+    <form action="/register" method="post" style="padding-top: 20px">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Login:</label>
+            <div class="col-sm-6">
+                <input type="text" name="login" />
+                <p th:if="${usernameMessage != null}">Login must be unique</p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Password:</label>
+            <div class="col-sm-6">
+                <input type="password" name="password" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Email:</label>
+            <div class="col-sm-6">
+                <input type="email" name="email" />
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Sign Up</button>
+    </form>
+</div>
+</body>
+</html>

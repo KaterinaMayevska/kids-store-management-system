@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="utf-8"/>
+
+    <title>Products</title>
+
+    <link rel="stylesheet" href="https://bootswatch.com/5/minty/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://bootswatch.com/5/minty/_bootswatch.scss"></script>
+</head>
+
+<body>
+
+<div class="container">
+    <div th:replace="~{navbar :: navigation(Products)}"/>
+
+    <h1 style="padding-top: 20px">Products</h1>
+    <span th:if="${products ==null}"> Catalog is empty</span>
+    <td th:if="${isAuthenticated}">
+        <a class="btn btn-primary" th:href="@{'/order/make/'} ">Order</a>
+    </td>
+
+    <td th:if="${isAdmin}">
+        <a class="btn btn-primary" th:href="@{'/add/product/'}">Add</a>
+    </td>
+
+
+    <table th:if="${products.size()>0}" class="table">
+        <thead class="thead-dark">
+        <tr>
+            <td scope="col">Articul</td>
+            <td scope="col">Name</td>
+            <td scope="col">Price</td>
+            <td scope="col">Color</td>
+            <td scope="col">Age</td>
+            <td scope="col">Gender</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.articul}"/>
+            <td th:text="${product.name}"/>
+            <td th:text="${product.price}"/>
+            <td th:text="${product.color}"/>
+            <td th:text="${product.age}"/>
+            <td th:text="${product.gender}"/>
+
+
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>
